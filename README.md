@@ -2,8 +2,6 @@
 
 Scalable Nyan Cat animation written in Python from scratch. [pygame](http://www.pygame.org/) required.
 
-![Nyan Cat](/borealkiss/nyancat.py/raw/master/example.png)
-
 ![Nyan Cat](/borealkiss/nyancat.py/raw/master/example.gif)
 
 ## License
