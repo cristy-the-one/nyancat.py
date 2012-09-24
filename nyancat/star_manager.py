@@ -67,8 +67,6 @@ if __name__ == "__main__":
 	
 	#Create a star manager object.
 	starManager = StarManager(10, DISPLAY_SURFACE, (3, 3), -10)	
-	#count = 0
-	
 	while True:
 		DISPLAY_SURFACE.fill(BACKGROUND_COLOR)
 				
@@ -82,9 +80,6 @@ if __name__ == "__main__":
 		
 		#Update the state of the stars.
 		starManager.update(DISPLAY_SURFACE)
-		
-		#pygame.image.save(DISPLAY_SURFACE, "star_animation_" + str(count) + ".png")
-		#count += 1
-		
+
 		pygame.display.update()
 		CLOCK.tick(FPS)

@@ -26,13 +26,13 @@ class Nyancat:
 	_PINK4 	= pygame.Color(255, 153, 153)	#FF9999
 	
 	def __init__(self, rect=pygame.Rect(0, 0, _PIXEL_WIDE, _PIXEL_HIGH)):
-		#Rectangle area of the cat image.
+		#Rectangle area of the cat image (subject to change).
 		self._rect = rect
 		
 		#Width of a pixelerated area of the image (i.e., dots' width)
 		self._tileWidth = 0.0
 		
-		#height of a pixelerated area of the image (i.e., dots' width)
+		#height of a pixelerated area of the image (i.e., dots' height)
 		self._tileHeight = 0.0
 		
 		#Animation frames from external modules.
@@ -109,7 +109,6 @@ class Nyancat:
 						
 			rect = pygame.Rect(int(x), int(y), int(w), int(h))
 			pygame.draw.rect(surface, color, rect, stroke)	
-	
 	#Return the rectangle area of the surface object.
 	def rect(self):
 		return self._rect
@@ -120,11 +119,6 @@ class Nyancat:
 		return (int(round(self._tileWidth)), int(round(self._tileHeight)))
 	pixelSize = property(pixelSize, None, None, None)
 	
-	#Return true if the current animation frame is set to the first.
-	def initialState(self):
-		return self._currentFrame == 0
-	initialState = property(initialState, None, None, None)
-	
 if __name__ == "__main__":
 	pygame.init()
 	DISPLAY_SURFACE = pygame.display.set_mode((320, 240))
@@ -133,9 +127,8 @@ if __name__ == "__main__":
 	FPS = 12
 	CLOCK = pygame.time.Clock()
 		
-	cat = Nyancat(pygame.Rect(110, 90, 100, 250))
-		
-	#count = 0
+	cat = Nyancat(pygame.Rect(0, 0, 100, 100))
+	cat.rect.center = DISPLAY_SURFACE.get_rect().center
 		
 	while True:
 		DISPLAY_SURFACE.fill(BACKGROUND_COLOR)
@@ -146,10 +139,7 @@ if __name__ == "__main__":
 				sys.exit()
 					
 		cat.draw(DISPLAY_SURFACE)
-		cat.update()
-					
-		#pygame.image.save(DISPLAY_SURFACE, "cat_animation_" + str(count) + ".png")
-		#count += 1			
+		cat.update()		
 					
 		pygame.display.update()
 		CLOCK.tick(FPS)

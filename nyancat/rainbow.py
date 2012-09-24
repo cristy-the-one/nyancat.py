@@ -8,6 +8,9 @@ class Rainbow:
 	_SCALER_X = 7
 	_SCALER_Y = 2
 	
+	#Number of the animation frame of the cat.
+	_NUM_FRAME_CAT = 6
+	
 	#Rainbow colors
 	_RED 	= pygame.Color(255, 0, 0) 		#FF0000
 	_ORANGE = pygame.Color(255, 153, 0) 	#FF9900
@@ -28,10 +31,19 @@ class Rainbow:
 					
 		#Store the toggled animation state.
 		self._animationToggled = False
+		
+		#Current frame index of the cat animation.
+		self._catFrame = 0
 	
 	#Update properties according to the status of the cat image.
 	def update(self):
-		self._animationToggled = not self._animationToggled
+		self._catFrame += 1
+		
+		#Update the animation frame of the rainbow object only when the cat object is in the initiali state, i.e., in the first frame.
+		#This is becaue the cat has 6 frames while the rainbow only 2.
+		if (self._catFrame > self.__class__._NUM_FRAME_CAT - 1):
+			self._animationToggled = not self._animationToggled
+			self._catFrame = 0
 	
 	#Draw rainbows according to the status of the cat image.
 	def draw(self, surface):
@@ -84,13 +96,11 @@ if __name__ == "__main__":
 	DISPLAY_SURFACE = pygame.display.set_mode((320, 240))
 	BACKGROUND_COLOR = pygame.Color(15, 77, 143)
 	DISPLAY_SURFACE.fill(BACKGROUND_COLOR)
-	FPS = 4
+	FPS = 12
 	CLOCK = pygame.time.Clock()
 	
 	#Create a rainbow object.
 	rainbow = Rainbow(pygame.Rect(320, 90, 70, 50), (3, 3))
-	
-	#count = 0
 	
 	while True:
 		DISPLAY_SURFACE.fill(BACKGROUND_COLOR)
@@ -105,9 +115,6 @@ if __name__ == "__main__":
 		
 		#Update the state of the rainbow.
 		rainbow.update()
-		
-		#pygame.image.save(DISPLAY_SURFACE, "rainbow_animation_" + str(count) + ".png")
-		#count += 1
 					
 		pygame.display.update()
 		CLOCK.tick(FPS)

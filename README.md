@@ -2,13 +2,11 @@
 
 Scalable Nyan Cat animation written in Python from scratch. [pygame](http://www.pygame.org/) required.
 
-![Nyan Cat](/borealkiss/nyancat.py/raw/master/animation_examples/nyancat.gif)
+![Nyan Cat](/borealkiss/nyancat.py/raw/master/animation_examples/small.gif)
 
-![Nyan Cat](/borealkiss/nyancat.py/raw/master/animation_examples/cat.gif)
+![Nyan Cat](/borealkiss/nyancat.py/raw/master/animation_examples/medium.gif)
 	
-![Nyan Cat](/borealkiss/nyancat.py/raw/master/animation_examples/rainbow.gif)
-	
-![Nyan Cat](/borealkiss/nyancat.py/raw/master/animation_examples/stars.gif)
+![Nyan Cat](/borealkiss/nyancat.py/raw/master/animation_examples/large.gif)
 
 ## Example
 
@@ -45,11 +43,9 @@ The simplest implementation is here (note that half of the code is boilerplate f
 		stars.draw(DISPLAY_SURFACE)
 		
 		#Update the animation state of the objects.
+		rainbow.update()
 		cat.update()
 		stars.update(DISPLAY_SURFACE)
-		
-		if cat.initialState:
-			rainbow.update()
 		
 		pygame.display.update()
 		CLOCK.tick(FPS)
