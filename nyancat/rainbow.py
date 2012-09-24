@@ -57,7 +57,7 @@ class Rainbow:
 				count = 0
 				direction *= -1
 	
-	#Draw a set of rainbow components (i.e., red, orange, ..., purple).
+	#Private method. Draw a set of rainbow components (i.e., red, orange, ..., purple).
 	def _draw(self, surface, origins):
 		x = int(round(origins[0]))
 		y = int(round(origins[1]))
@@ -87,7 +87,10 @@ if __name__ == "__main__":
 	FPS = 4
 	CLOCK = pygame.time.Clock()
 	
+	#Create a rainbow object.
 	rainbow = Rainbow(pygame.Rect(320, 90, 70, 50), (3, 3))
+	
+	#count = 0
 	
 	while True:
 		DISPLAY_SURFACE.fill(BACKGROUND_COLOR)
@@ -97,8 +100,14 @@ if __name__ == "__main__":
 				pygame.quit()
 				sys.exit()
 					
+		#Draw the rainbow.
 		rainbow.draw(DISPLAY_SURFACE)	
+		
+		#Update the state of the rainbow.
 		rainbow.update()
+		
+		#pygame.image.save(DISPLAY_SURFACE, "rainbow_animation_" + str(count) + ".png")
+		#count += 1
 					
 		pygame.display.update()
 		CLOCK.tick(FPS)

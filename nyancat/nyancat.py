@@ -135,6 +135,8 @@ if __name__ == "__main__":
 		
 	cat = Nyancat(pygame.Rect(110, 90, 100, 250))
 		
+	#count = 0
+		
 	while True:
 		DISPLAY_SURFACE.fill(BACKGROUND_COLOR)
 			
@@ -145,6 +147,9 @@ if __name__ == "__main__":
 					
 		cat.draw(DISPLAY_SURFACE)
 		cat.update()
+					
+		#pygame.image.save(DISPLAY_SURFACE, "cat_animation_" + str(count) + ".png")
+		#count += 1			
 					
 		pygame.display.update()
 		CLOCK.tick(FPS)

@@ -28,24 +28,29 @@ class Star:
 			
 		self._configureSize()
 	
+	#Private method. 
 	def _configureSize(self):
 		self._tileWidth = self._rect.width / float(self.__class__._PIXEL_WIDE)
 		self._tileHight = self._rect.height / float(self.__class__._PIXEL_HIGH)
 	
+	#Update the animation frame.
 	def update(self):
 		self._currentFrame += 1
 
 		if (self._currentFrame > len(self._frames) - 1):
 			self._currentFrame = 0
 	
+	#Draw the star on the surface object.
 	def draw(self, surface):
 		offsetX = self._rect.left
 		offsetY = self._rect.top
 		w = round(self._tileWidth)
 		h = round(self._tileHight)
 		
+		#No stroke by default, i.e., fill the rectangle.
 		stroke = 0
 		
+		#If the rectangle is too small to be filled, stroke it.
 		if w <= 1 or h <= 1:
 			stroke = 1
 		
@@ -64,38 +69,14 @@ class Star:
 		return self._currentFrame >= len(self._frames) - 1
 	animationFinished = property(animationFinished)
 	
+	#Return the current animation frame number.
 	def getCurrentFrame(self):
 		return self._currentFrame
-		
+	
+	#Set the current animation frame number.
 	def setCurrentFrame(self, value):
 			self._currentFrame = value
 	currentFrame = property(getCurrentFrame, setCurrentFrame, None, None)
-
-def __createStars(numStars, surface):
-	stars = []
-		
-	for i in range(numStars):
-		star = __createStar(surface)
-		stars.append(star)
-		
-	return stars
-
-def __createStar(surface):
-	rect = surface.get_rect()
-	x = random.randint(rect.left, rect.width)
-	y = random.randint(rect.top, rect.height)
-	star = Star((3, 3))
-	star.rect.topleft = (x, y)
-	return star
-
-def __updateStars(stars, surface):
-	for i in reversed(range(len(stars))):
-		star = stars[i]
-		star.update()
-		
-def __drawStars(stars, surface):
-	for star in stars:
-		star.draw(surface)
 
 if __name__ == "__main__":
 	pygame.init()
@@ -105,7 +86,9 @@ if __name__ == "__main__":
 	FPS = 12
 	CLOCK = pygame.time.Clock()
 	
-	stars = __createStars(10, DISPLAY_SURFACE)
+	#Create a star object.
+	star = Star((3, 3))
+	star.rect.center = DISPLAY_SURFACE.get_rect().center
 	
 	while True:
 		DISPLAY_SURFACE.fill(BACKGROUND_COLOR)
@@ -115,8 +98,11 @@ if __name__ == "__main__":
 				pygame.quit()
 				sys.exit()
 		
-		__drawStars(stars, DISPLAY_SURFACE)
-		__updateStars(stars, DISPLAY_SURFACE)
-					
+		#Draw the star.
+		star.draw(DISPLAY_SURFACE)
+		
+		#Update the state of the star.
+		star.update()
+			
 		pygame.display.update()
 		CLOCK.tick(FPS)
