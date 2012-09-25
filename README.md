@@ -27,7 +27,7 @@ The simplest implementation is here (note that half of the code is boilerplate f
 	#Create objects.
 	cat = Nyancat(pygame.Rect(110, 90, 100, 250))
 	rainbow = Rainbow(cat.rect, cat.pixelSize)
-	stars = StarManager(10, DISPLAY_SURFACE, cat.pixelSize)
+	stars = StarManager(DISPLAY_SURFACE.get_rect(), cat.pixelSize, 10)
 
 	while True:
 		DISPLAY_SURFACE.fill(BACKGROUND_COLOR)
@@ -45,7 +45,7 @@ The simplest implementation is here (note that half of the code is boilerplate f
 		#Update the animation state of the objects.
 		rainbow.update()
 		cat.update()
-		stars.update(DISPLAY_SURFACE)
+		stars.update()
 		
 		pygame.display.update()
 		CLOCK.tick(FPS)
