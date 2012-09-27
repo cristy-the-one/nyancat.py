@@ -20,8 +20,8 @@ def main():
 	#cat = Nyancat(pygame.Rect(0, 0, 100, 100))
 	#cat = Nyancat(pygame.Rect(0, 0, 200, 200))
 	cat.rect.center = DISPLAY_SURFACE.get_rect().center
-	rainbow = Rainbow(cat.rect, cat.pixelSize)
-	starManager = StarManager(DISPLAY_SURFACE.get_rect(), cat.pixelSize, 20, -5)
+	rainbow = Rainbow(cat.rect, cat.cellSize)
+	starManager = StarManager(DISPLAY_SURFACE.get_rect(), cat.cellSize, 20, -5)
 	
 	while True:
 		DISPLAY_SURFACE.fill(BACKGROUND_COLOR)

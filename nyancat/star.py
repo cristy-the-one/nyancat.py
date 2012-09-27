@@ -10,9 +10,9 @@ class Star:
 	_PIXEL_HIGH = 9
 	_WHITE = pygame.Color(255, 255, 255)
 	
-	def __init__(self, pixelSize):
+	def __init__(self, cellSize):
 		#Rectangle area of the star image.
-		self._rect = pygame.Rect(0, 0, self.__class__._PIXEL_WIDE * pixelSize[0], self.__class__._PIXEL_HIGH * pixelSize[1])
+		self._rect = pygame.Rect(0, 0, self.__class__._PIXEL_WIDE * cellSize[0], self.__class__._PIXEL_HIGH * cellSize[1])
 			
 		#Rectangle width of each star component (i.e., white dots)
 		self._tileWidth = 0.0

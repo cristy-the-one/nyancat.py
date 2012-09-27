@@ -115,9 +115,9 @@ class Nyancat:
 	rect = property(rect, None, None, None)
 	
 	#Return a pixelerated rectangle area (i.e., dot size) for the image.
-	def pixelSize(self):
+	def cellSize(self):
 		return (int(round(self._tileWidth)), int(round(self._tileHeight)))
-	pixelSize = property(pixelSize, None, None, None)
+	cellSize = property(cellSize, None, None, None)
 	
 if __name__ == "__main__":
 	pygame.init()

@@ -9,33 +9,32 @@ class StarManager:
 	#Default value of the horizontal velocity of a star.
 	_DEFAULT_VELOCITY_X = -10
 	
-	def __init__(self, surfaceRect, pixelSize, numStars, velocityX=_DEFAULT_VELOCITY_X):
+	def __init__(self, surfaceRect, cellSize, numStars, velocityX=_DEFAULT_VELOCITY_X):
 		#Rectangle area of the surface object upon which stars shows up.
 		self._surfaceRect = surfaceRect
-			
+				
 		#Size of pixelated rectangle for the image.
-		self._pixelSize = pixelSize
-			
+		self._cellSize = cellSize
+				
 		#Vhorizontal velocity of stars (positive right).
 		self._velocityX = velocityX
-			
+				
 		#Star objects to manage.
-		self._stars = self._createStars(surfaceRect, pixelSize, numStars)
-
+		self._stars = self._createStars(surfaceRect, cellSize, numStars)	
 	#Return a star object randomly chosen within a rectangle area.
-	def _createStar(self, rect, pixelSize):
+	def _createStar(self, rect, cellSize):
 		x = random.randint(rect.left, rect.width)
 		y = random.randint(rect.top, rect.height)
-		star = Star(pixelSize)
+		star = Star(cellSize)
 		star.rect.topleft = (x, y)
 		return star
-		
-	#Return a list of newly created stars.
-	def _createStars(self, rect, pixelSize, numStars):
+
+	#Return a list of newly created stars.cellSize
+	def _createStars(self, rect, cellSize, numStars):
 		stars = []
 					
 		for i in range(numStars):
-			star = self._createStar(rect, pixelSize)
+			star = self._createStar(rect, cellSize)
 			stars.append(star)
 					
 		return stars
@@ -50,7 +49,7 @@ class StarManager:
 			#If the star comes to the end of the animation remove it and add a new one.
 			if star.animationFinished:
 				self._stars.remove(star)
-				newStar = self._createStar(self._surfaceRect, self._pixelSize)
+				newStar = self._createStar(self._surfaceRect, self._cellSize)
 				newStar.currentFrame = 0
 				self._stars.append(newStar)
 	

@@ -18,23 +18,23 @@ class Rainbow:
 	_GREEN	= pygame.Color(51, 255, 0)		#33FF00
 	_BLUE	= pygame.Color(0, 153, 255)		#0099FF
 	_PURPLE	= pygame.Color(102, 51, 255)	#6633FF
-	
-	def __init__(self, catRect, pixelSize):
+
+	def __init__(self, catRect, cellSize):
 		#Rectangle area of the cat image, not the rainbow!!
 		self._catRect = catRect
 					
 		#Rectangle width of each rainbow component (i.e., red rectangle, orange rectangle, etc.)
-		self._tileWidth = self.__class__._SCALER_X * pixelSize[0]
+		self._tileWidth = self.__class__._SCALER_X * cellSize[0]
 					
 		#Rectangle height of each rainbow component
-		self._tileHeight = self.__class__._SCALER_Y * pixelSize[1]
+		self._tileHeight = self.__class__._SCALER_Y * cellSize[1]
 					
 		#Store the toggled animation state.
 		self._animationToggled = False
 		
 		#Current frame index of the cat animation.
 		self._catFrame = 0
-	
+
 	#Update properties according to the status of the cat image.
 	def update(self):
 		self._catFrame += 1
