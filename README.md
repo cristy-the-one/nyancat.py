@@ -52,7 +52,7 @@ The simplest implementation is here (note that half of the code is boilerplate f
 
 ## License
 
-The source code itself is provided under the terms of the [MIT License](http://www.opensource.org/licenses/mit-license.php). However licensing is subject to change in the future version. For the usage of the character, visit [http://nyan.cat/](http://nyan.cat/).
+The source code itself is provided under the terms of the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0). For the usage of the character, visit [http://nyan.cat/](http://nyan.cat/).
 
 ## Contact
 

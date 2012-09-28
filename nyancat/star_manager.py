@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+# Copyright 2012 Hajime Hikida
+# Licensed under the Apache License 2.0
 
 import sys
 import random
